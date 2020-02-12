@@ -3,11 +3,11 @@ import { DataService } from "src/app/services/data.service";
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-simple-table",
-  templateUrl: "./simple-table.component.html",
-  styleUrls: ["./simple-table.component.css"]
+  selector: "app-multi-table",
+  templateUrl: "./multi-table.component.html",
+  styleUrls: ["./multi-table.component.css"]
 })
-export class SimpleTableComponent implements OnInit {
+export class MultiTableComponent implements OnInit {
   public users$: Observable<Array<Faker.UserCard>>;
 
   constructor(private dataService: DataService) {}

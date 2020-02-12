@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/services/data.service";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-complex-table",
@@ -7,11 +8,11 @@ import { DataService } from "src/app/services/data.service";
   styleUrls: ["./complex-table.component.css"]
 })
 export class ComplexTableComponent implements OnInit {
-  public users: Array<Faker.UserCard>;
+  public users$: Observable<Array<Faker.UserCard>>;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.users = this.dataService.getUsers().slice(0, 50);
+    this.users$ = this.dataService.getUsers();
   }
 }

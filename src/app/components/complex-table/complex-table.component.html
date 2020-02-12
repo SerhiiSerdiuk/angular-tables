@@ -1,27 +1,27 @@
 <h1>Complex Table</h1>
-<table>
+<table *ngIf="users$ | async as users">
   <thead>
-    <tr>
-      <th>#</th>
-      <th>name</th>
-      <th>username</th>
-      <th>email</th>
-      <th>city</th>
-      <th>phone</th>
-      <th>website</th>
-      <th>company</th>
-    </tr>
+      <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>username</th>
+        <th>email</th>
+        <th>city</th>
+        <th>phone</th>
+        <th>website</th>
+        <th>company</th>
+      </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users; index as i; odd as isOdd">
-      <td>{{ i + 1 }}</td>
-      <td><app-table-cell [value]="user.name" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.username" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.email" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.address.city" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.phone" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.website" [isOdd]="isOdd"></app-table-cell></td>
-      <td><app-table-cell [value]="user.company.name" [isOdd]="isOdd"></app-table-cell></td>
-    </tr>
+      <tr *ngFor="let user of users; index as i; odd as isOdd">
+        <td>{{ i + 1 }}</td>
+        <td><app-table-cell [value]="user.name" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.username" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.email" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.address.city" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.phone" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.website" [isOdd]="isOdd"></app-table-cell></td>
+        <td><app-table-cell [value]="user.company.name" [isOdd]="isOdd"></app-table-cell></td>
+      </tr>
   </tbody>
 </table>

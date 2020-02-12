@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import * as faker from "faker";
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
@@ -13,7 +14,7 @@ export class DataService {
     }
   }
 
-  public getUsers(): Array<Faker.UserCard> {
-    return this._users;
+  public getUsers(): Observable<Array<Faker.UserCard>> {
+    return of(this._users);
   }
 }
