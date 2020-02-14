@@ -8,18 +8,21 @@ import { ComplexTableComponent } from "./components/complex-table/complex-table.
 import { TableCellComponent } from "./components/table-cell/table-cell.component";
 import { ValueComponent } from "./components/value/value.component";
 import { MultiTableComponent } from './components/multi-table/multi-table.component';
+import { ScrollService } from './services/scroll.service';
+import { OneComplexTableComponent } from './components/one-complex-table/one-complex-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleTableComponent,
     ComplexTableComponent,
+    OneComplexTableComponent,
     MultiTableComponent,
     TableCellComponent,
     ValueComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  providers: [ScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
