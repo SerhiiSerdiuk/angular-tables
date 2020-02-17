@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
-import * as faker from "faker";
+import { Injectable } from '@angular/core';
+import * as faker from 'faker';
 import { Observable, of } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class DataService {
   private _users: Array<Faker.UserCard> = [];
@@ -15,6 +16,6 @@ export class DataService {
   }
 
   public getUsers(): Observable<Array<Faker.UserCard>> {
-    return of(this._users);
+    return of(this._users).pipe(shareReplay());
   }
 }

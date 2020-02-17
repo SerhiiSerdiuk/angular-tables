@@ -1,8 +1,9 @@
-<h1>Multi Complex Tables</h1>
-<ng-template #table let-users let-index="index">
-   <app-complex-table [users]="users" [displayFrom]="0" [displayTo]="0"></app-complex-table>
-</ng-template>
-
-<ng-container *ngFor="let i of [1, 2, 3]">
-   <ng-container *ngTemplateOutlet="table; context: { $implicit: users$ | async, index: i }"></ng-container>
+<h1>500 Complex Tables with 2000 entries each (virtual scroll)</h1>
+<ng-container *ngFor="let table of tables">
+  <app-complex-table [users]="table.data$ | async"
+                     [id]="table.id"
+                     [displayFrom]="table.displayFrom"
+                     [displayTo]="table.displayTo"
+                     class="complex-table">
+  </app-complex-table>
 </ng-container>

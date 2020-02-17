@@ -1,8 +1,8 @@
-import { Injectable, OnDestroy, NgZone } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import { Injectable, OnDestroy, NgZone } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ScrollService implements OnDestroy {
   private _info: Subject<void> = new Subject();
@@ -25,12 +25,12 @@ export class ScrollService implements OnDestroy {
 
       // Test via a getter in the options object to see if the passive property is accessed
       try {
-        const opts = Object.defineProperty({}, "passive", {
+        const opts = Object.defineProperty({}, 'passive', {
           get() {
             this.passiveSupported = true;
           }
         });
-        window.addEventListener("test", null, opts);
+        window.addEventListener('test', null, opts);
       } catch (e) {}
       return this.passiveSupported;
     }
@@ -47,7 +47,7 @@ export class ScrollService implements OnDestroy {
     }
     this.ngZone.runOutsideAngular(() => {
       window.addEventListener(
-        "scroll",
+        'scroll',
         this.scroll.bind(this),
         this.eventOptions
       );
@@ -64,7 +64,7 @@ export class ScrollService implements OnDestroy {
 
   ngOnDestroy() {
     window.removeEventListener(
-      "scroll",
+      'scroll',
       this.scroll.bind(this),
       this.eventOptions
     );

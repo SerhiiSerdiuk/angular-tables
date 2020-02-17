@@ -1,17 +1,24 @@
-import { Component, OnInit, ViewChildren, QueryList } from "@angular/core";
-import { DataService } from "src/app/services/data.service";
-import { Observable } from "rxjs";
-import { ComplexTableComponent } from "../complex-table/complex-table.component";
-import { ScrollService } from "src/app/services/scroll.service";
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Observable } from 'rxjs';
+import { ComplexTableComponent } from '../complex-table/complex-table.component';
+import { ScrollService } from 'src/app/services/scroll.service';
 
 @Component({
-  selector: "app-multi-table",
-  templateUrl: "./multi-table.component.html",
-  styleUrls: ["./multi-table.component.css"]
+  selector: 'app-multi-table',
+  templateUrl: './multi-table.component.html',
+  styleUrls: ['./multi-table.component.scss']
 })
 export class MultiTableComponent implements OnInit {
-  @ViewChildren(ComplexTableComponent) tables: QueryList<ComplexTableComponent>;
+  @ViewChildren(ComplexTableComponent) private complexTables: QueryList<
+    ComplexTableComponent
+  >;
+  private tablesMap = new Map();
+
   public users$: Observable<Array<Faker.UserCard>>;
+  public get tables() {
+    return this.tablesMap.values();
+  }
 
   constructor(
     private dataService: DataService,
@@ -19,7 +26,14 @@ export class MultiTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.users$ = this.dataService.getUsers();
+    for (let i = 0; i < 500; i++) {
+      this.tablesMap.set(i.toString(), {
+        id: i.toString(),
+        data$: this.dataService.getUsers(),
+        displayFrom: 0,
+        displayTo: 0
+      });
+    }
     this.scrollService.info$.subscribe(() => {
       this.updateView();
     });
@@ -30,14 +44,17 @@ export class MultiTableComponent implements OnInit {
 
   private updateView(): void {
     const viewportHeight = window.innerHeight;
-    this.tables.forEach(table => {
-      const tableBodyElement = (table.el
-        .nativeElement as HTMLElement).querySelector("tbody");
+    this.complexTables.forEach(t => {
+      const tableBodyElement = (t.el
+        .nativeElement as HTMLElement).querySelector('tbody');
       const { from, to } = this.percentageInViewport(
         tableBodyElement,
         viewportHeight
       );
-      table.display(from, to);
+      const table = this.tablesMap.get(t.id);
+      table.displayFrom = from;
+      table.displayTo = to;
+      this.tablesMap.set(table.id, table);
     });
   }
 

@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: "app-one-complex-table",
-  templateUrl: "./one-complex-table.component.html",
-  styleUrls: ["./one-complex-table.component.css"]
+  selector: 'app-one-complex-table',
+  templateUrl: './one-complex-table.component.html',
+  styleUrls: ['./one-complex-table.component.scss']
 })
 export class OneComplexTableComponent implements OnInit {
   public users$: Observable<Array<Faker.UserCard>>;

@@ -1,0 +1,10 @@
+.complex-table {
+  display: block;
+  margin-bottom: 20px;
+
+  ::ng-deep {
+    table thead tr th {
+      background-color: #eee;
+    }
+  }
+}
