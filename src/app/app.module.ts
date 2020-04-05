@@ -10,6 +10,7 @@ import { ValueComponent } from './components/value/value.component';
 import { MultiTableComponent } from './components/multi-table/multi-table.component';
 import { ScrollService } from './services/scroll.service';
 import { OneComplexTableComponent } from './components/one-complex-table/one-complex-table.component';
+import { ProgressiveRenderedTableComponent } from './components/progressive-rendered-table/progressive-rendered-table.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { OneComplexTableComponent } from './components/one-complex-table/one-com
     SimpleTableComponent,
     ComplexTableComponent,
     OneComplexTableComponent,
+    ProgressiveRenderedTableComponent,
     MultiTableComponent,
     TableCellComponent,
     ValueComponent

@@ -1,0 +1,70 @@
+<h1>Progressive Rendered Table</h1>
+<table>
+  <colgroup>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>name</th>
+      <th>username</th>
+      <th>email</th>
+      <th>city</th>
+      <th>phone</th>
+      <th>website</th>
+      <th>company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container #itemsContainer></ng-container>
+  </tbody>
+</table>
+
+<ng-template #item let-user="user" let-index="index" let-isOdd="isOdd">
+  <tr>
+    <td>{{ index }}</td>
+    <td>
+      <app-table-cell [value]="user.name"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.username"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.email"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.address.city"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.phone"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.website"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+    <td>
+      <app-table-cell [value]="user.company.name"
+                      [isOdd]="isOdd">
+      </app-table-cell>
+    </td>
+  </tr>
+</ng-template>
+

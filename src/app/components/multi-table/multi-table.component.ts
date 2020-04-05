@@ -26,7 +26,7 @@ export class MultiTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 1; i++) {
       this.tablesMap.set(i.toString(), {
         id: i.toString(),
         data$: this.dataService.getUsers(),
